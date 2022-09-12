@@ -49,3 +49,7 @@ group :test do
 end
 
 gem "active_model_serializers", "~> 0.10.12"
+
+gem "faker"
+gem 'countries', '~> 1.2', '>= 1.2.5'
+gem 'ruby-continent', '~> 0.1.0'
