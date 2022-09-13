@@ -61,7 +61,7 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="Orgchart" style="swimlane;html=1;startSize=20;horizontal=1;containerType=tree;glass=0;" vertex="1" parent="1">
-                    <mxGeometry x="-840" y="770" width="1570" height="570" as="geometry"/>
+                    <mxGeometry x="-910" y="790" width="1570" height="570" as="geometry"/>
                 </mxCell>
                 <UserObject label="App&lt;br&gt;&lt;br&gt;" name="Tessa Miller" position="CFO" location="Office 1" email="me@example.com" placeholders="1" link="https://www.draw.io" id="18">
                     <mxCell style="label;image=https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-3-128.png;whiteSpace=wrap;html=1;rounded=0;glass=0;treeMoving=1;treeFolding=1;" vertex="1" parent="17">
@@ -156,7 +156,7 @@
                 </mxCell>
                 <UserObject label="NavBar" name="Tessa Miller" position="CFO" location="Office 1" email="me@example.com" placeholders="1" link="https://www.draw.io" id="45">
                     <mxCell style="label;image=https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-3-128.png;whiteSpace=wrap;html=1;rounded=0;glass=0;treeMoving=1;treeFolding=1;" vertex="1" parent="1">
-                        <mxGeometry x="-550" y="720" width="180" height="70" as="geometry"/>
+                        <mxGeometry x="-620" y="700" width="180" height="70" as="geometry"/>
                     </mxCell>
                 </UserObject>
                 <mxCell id="44" value="" style="edgeStyle=none;html=1;" edge="1" source="18" target="45" parent="1">

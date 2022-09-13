@@ -1,12 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Homepage from './Homepage'
 
-
-
-
 function App() {
   return (
+
     <div className="App">
       <header>
 
