@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -24,8 +25,8 @@ def user_template
 end
 
 def review_template
-   rating = Faker::Number.between(from: 0, to: 10)
-   review = Faker::Hipster.sentence(word_count: 4)
+   rating = Faker::Number.between(from: 1, to: 10)
+   review = Faker::Hipster.paragraph(sentence_count: 1)
    image_url = Faker::LoremPixel.image(size: "50x60")
    pro_tip = Faker::Hipster.sentence(word_count: 2)
    length_of_stay = Faker::Number.between(from: 1, to: 99)
@@ -35,22 +36,22 @@ def review_template
    {rating: rating, image_url: image_url, destination_id: destination_id, user_id: user_id, length_of_stay: length_of_stay, city: city, pro_tip: pro_tip, review: review}
 end
 
-# def destination_template
-#    country = Country.name
-#    continent = Continent.by_alpha_3_code
-#    {country_or_territory: country, continent: continent}
-# end
+def destination_template
+   country = Faker::Address.country_code
+   c = ISO3166::Country.find_country_by_alpha2(country)
+   {country_or_territory: c.name, continent: c.region}
+end
 
 25.times do
    User.create(user_template)
 end
 
 25.times do
-   Review.create(review_template)
+   Destination.create(destination_template)
 end
 
-# 25.times do
-#    Destination.create(destination_template)
-# end
+25.times do
+   Review.create(review_template)
+end
 
 puts "Finished seeding!"
