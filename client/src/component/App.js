@@ -57,9 +57,6 @@ function App() {
           {/* <Route path='/reviews' element={<Reviews reviews={reviews}/>} /> */}
           <Route path='/destinations' element={<Destinations destinations={destinations}/>} />
         </Routes>
-      </body>
-          <Route path='/review/create' element={<ReviewForm destinations={destinations} />}/>
-        </Routes>
         </Router>
       </div>
     </div>
