@@ -1,10 +1,10 @@
 puts "Seeding..."
 
-user1 = User.create(name: "Charlie Brown", username: "Snoopy", email: Faker::Internet.free_email, password: "12345678", age: 20, location: Faker::Nation.capital_city)
-user2 = User.create(name: "Sherlock Holmes", username: "221B", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city)
-user3 = User.create(name: "John Mycroft", username: "TheDoctor", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city)
-user4 = User.create(name: "Arya Stark", username: "Has_No_Name", email: Faker::Internet.free_email, password: "ABC12345678!", age: 20, location: Faker::Nation.capital_city)
-user5 = User.create(name: "Jon Snow", username: "Ice_and_Fire", email: Faker::Internet.free_email, password: "ABC12345678!", age: 25, location: Faker::Nation.capital_city)
+user1 = User.create(name: "Charlie Brown", username: "Snoopy", email: Faker::Internet.free_email, password: "12345678", age: 20, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
+user2 = User.create(name: "Sherlock Holmes", username: "221B", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
+user3 = User.create(name: "John Mycroft", username: "TheDoctor", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
+user4 = User.create(name: "Arya Stark", username: "Has_No_Name", email: Faker::Internet.free_email, password: "ABC12345678!", age: 20, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
+user5 = User.create(name: "Jon Snow", username: "Ice_and_Fire", email: Faker::Internet.free_email, password: "ABC12345678!", age: 25, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 
 def user_template
    username = Faker::Internet.username
@@ -12,8 +12,9 @@ def user_template
    email= Faker::Internet.free_email
    password = Faker::Internet.password(min_length: 8)
    age = Faker::Number.between(from: 15, to: 99)
+   avatar = Faker::Avatar.image(slug: "my-own-slug", size: "50x50")
    location = Faker::Nation.capital_city
-   {username: username, name: name, email: email, password: password, age: age, location: location}
+   {username: username, name: name, email: email, password: password, age: age, location: location, avatar: avatar}
 end
 
 def review_template
