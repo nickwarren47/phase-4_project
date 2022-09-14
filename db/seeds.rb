@@ -79,9 +79,9 @@ d41 = Destination.create(country_or_territory: "South Korea", continent: "Asia",
    User.create(user_template)
 end
 
-25.times do
-   Destination.create(destination_template)
-end
+# 25.times do
+#    Destination.create(destination_template)
+# end
 
 25.times do
    Review.create(review_template)
