@@ -14,7 +14,7 @@ function Homepage() {
                 <h2 className="text-white text-3xl font-light mt-5 text-center"> Your place to find a place</h2>
                 <div className="flex items-center justify-center mt-7 space-x-7">
                     <TailwindcssButton>
-                        Let's Get Out There!
+                        <Link to="/destinations"> Let's Get Out There! </Link>
                     </TailwindcssButton>
                     <TailwindcssButton>
                         <Link to="/login"> User Login </Link>
