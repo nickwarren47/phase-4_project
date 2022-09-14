@@ -8,7 +8,6 @@ import Users from './Users';
 // import Reviews from './Reviews';
 import Destinations from './Destinations';
 
-const baseUrl = 'http://localhost:3000';
 
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
   const [destinations, setDestinations] = useState([]);
 
   const fetchData = (urlParams = "", setter) => {
-    fetch(`${baseUrl}/${urlParams}`)
+    fetch(`${urlParams}`)
       .then((res) => res.json())
       .then((data) => setter(data));
   };
@@ -55,7 +54,7 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/users' element={<Users users={users}/>} />
           {/* <Route path='/reviews' element={<Reviews reviews={reviews}/>} /> */}
-          <Route path='/reviews/create' element={<ReviewForm destinations={destinations}/>} />
+          <Route path='/create' element={<ReviewForm destinations={destinations}/>} />
           <Route path='/destinations' element={<Destinations destinations={destinations}/>} />
         </Routes>
         </Router>
