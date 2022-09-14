@@ -35,7 +35,7 @@ function App() {
       }
     });
   }, []);
-
+  
   function handleLogin(user) {
     setUser(user);
   }
@@ -74,6 +74,7 @@ function App() {
             <Route path='/create' element={<ReviewForm destinations={destinations} />} />
             <Route path='/destinations' element={<Destinations destinations={destinations} />} />
           </Routes>
+
         </Router>
       </div>
     </div>
