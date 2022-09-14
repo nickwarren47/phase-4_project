@@ -8,8 +8,6 @@ import Users from './Users';
 // import Reviews from './Reviews';
 import Destinations from './Destinations';
 
-
-
 function App() {
 
   const [users, setUsers] = useState([]);
@@ -27,6 +25,12 @@ function App() {
     fetchData("reviews", setReviews);
     fetchData("destinations", setDestinations)
   }, []);
+
+  // useEffect(() => {
+  //   fetch(`${baseUrl}/destinations`)
+  //   .then(res => res.json())
+  //   .then(data => console.log(data))
+  // }, [])
 
   function renderUsers(user) {
     setUsers([...users, user])
