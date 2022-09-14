@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DestinationCard from './DestinationCard'
 
 function Destinations({ destinations }) {
 
-   const destinationList = destinations.map(dest => (
+   const [search, setSearch] = useState("")
+
+   const searchResults = destinations.filter(dest => (
+      dest.country_or_territory.toLowerCase().includes(search.toLowerCase()) ||
+      dest.continent.toLowerCase().includes(search.toLowerCase())
+   ))
+
+   function handleSearch(e) {
+      setSearch(e.target.value)
+   }
+
+   const destinationList = searchResults.map(dest => (
       <DestinationCard
          country_or_territory={dest.country_or_territory}
          continent={dest.continent}
@@ -13,12 +24,20 @@ function Destinations({ destinations }) {
       />
       )
    )
-
-
+   
   return (
 
-    <div>{destinationList}</div>
+    <div>
+      <input
+        onChange={handleSearch}
+        type="text"
+        placeholder="Search Destinations"
+      />
+      <div className="flex flex-wrap justify-center">
+         {destinationList}
+      </div>
+   </div>
   )
 }
 
-export default Destinations
+export default Destinations;
