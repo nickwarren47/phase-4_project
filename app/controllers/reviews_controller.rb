@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-    skip_before_action :authorize, only: [:index, :show]
+    # remove :create later once login form has been established
+    skip_before_action :authorize, only: [:index, :show, :create]
 
     def index
         render json: Review.all
@@ -7,7 +8,13 @@ class ReviewsController < ApplicationController
 
     def show
         review = review_find
-        render json :review
+        render json: review
+    end
+
+    def create
+        review = Review.create!(review_params)
+        # session[:user_id] = user.id
+        render json: review, status: :created
     end
 
     def update
