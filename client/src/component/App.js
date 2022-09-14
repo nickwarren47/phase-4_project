@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
-import {Router, Route, Routes} from 'react-router-dom';
-
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Homepage from './Homepage';
 import NavBar from './NavBar';
+import ReviewForm from './ReviewForm';
 import Signup from './Signup';
 import Users from './Users';
 // import Reviews from './Reviews';
@@ -48,16 +47,21 @@ function App() {
       <header>
 
       </header>
-      <body id="app-body">
-        {/* <NavBar /> */}
+      <div id="app-body">
+        <Router>
+        <NavBar />
         <Routes>
-          <Route path='/' element={<Homepage/>}/>
+          <Route path='/' element={<Homepage />}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/users' element={<Users users={users}/>} />
           {/* <Route path='/reviews' element={<Reviews reviews={reviews}/>} /> */}
           <Route path='/destinations' element={<Destinations destinations={destinations}/>} />
         </Routes>
       </body>
+          <Route path='/review/create' element={<ReviewForm destinations={destinations} />}/>
+        </Routes>
+        </Router>
+      </div>
     </div>
   );
 }
