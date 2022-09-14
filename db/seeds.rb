@@ -9,12 +9,11 @@ user5 = User.create(name: "Jon Snow", username: "Ice_and_Fire", email: Faker::In
 def user_template
    username = Faker::Internet.username
    name = Faker::Name.unique.name
-   avatar = Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg")
    email= Faker::Internet.free_email
    password = Faker::Internet.password(min_length: 8)
    age = Faker::Number.between(from: 15, to: 99)
    location = Faker::Nation.capital_city
-   {username: username, name: name, avatar: avatar, email: email, password: password, age: age, location: location}
+   {username: username, name: name, email: email, password: password, age: age, location: location}
 end
 
 def review_template
@@ -80,9 +79,9 @@ d41 = Destination.create(country_or_territory: "South Korea", continent: "Asia",
    User.create(user_template)
 end
 
-# 25.times do
-#    Destination.create(destination_template)
-# end
+25.times do
+   Destination.create(destination_template)
+end
 
 25.times do
    Review.create(review_template)
