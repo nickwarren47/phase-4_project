@@ -1,8 +1,11 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom"
+import React, { useContext } from "react";
+import { Link } from "react-router-dom"
+import { AuthContext } from "../Context/AuthContext"
 
 
 function Homepage() {
+
+    const { user } = useContext(AuthContext);
 
     return (
         <div>
@@ -16,12 +19,16 @@ function Homepage() {
                     <TailwindcssButton>
                         <Link to="/destinations"> Let's Get Out There! </Link>
                     </TailwindcssButton>
-                    <TailwindcssButton>
-                        <Link to="/login"> User Login </Link>
-                    </TailwindcssButton>
-                    <TailwindcssButton>
-                        <Link to="/signup"> User Sign Up </Link>
-                    </TailwindcssButton>
+                    {!user ? (
+                        <>
+                            <TailwindcssButton>
+                                <Link to="/login"> User Login </Link>
+                            </TailwindcssButton>
+                            <TailwindcssButton>
+                                <Link to="/signup"> User Sign Up </Link>
+                            </TailwindcssButton>
+                        </>
+                    ) : null}
                 </div>
             </div>
         </div>
