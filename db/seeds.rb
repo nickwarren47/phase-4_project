@@ -2,7 +2,7 @@ puts "Seeding..."
 
 user1 = User.create(name: "Charlie Brown", username: "Snoopy", email: Faker::Internet.free_email, password: "12345678", age: 20, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 user2 = User.create(name: "Sherlock Holmes", username: "221B", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
-user3 = User.create(name: "John Mycroft", username: "TheDoctor", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
+user3 = User.create(name: "John Watson", username: "TheDoctor", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 user4 = User.create(name: "Arya Stark", username: "Has_No_Name", email: Faker::Internet.free_email, password: "ABC12345678!", age: 20, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 user5 = User.create(name: "Jon Snow", username: "Ice_and_Fire", email: Faker::Internet.free_email, password: "ABC12345678!", age: 25, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 
