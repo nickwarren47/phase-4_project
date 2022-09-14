@@ -24,7 +24,7 @@ def review_template
    pro_tip = Faker::Hipster.sentence(word_count: 2)
    length_of_stay = Faker::Number.between(from: 1, to: 99)
    city = Faker::Address.city
-   destination_id = Faker::Number.between(from: 1, to: 25)
+   destination_id = Faker::Number.between(from: 1, to: 41)
    user_id = Faker::Number.between(from: 1, to: 25)
    {rating: rating, image_url: image_url, destination_id: destination_id, user_id: user_id, length_of_stay: length_of_stay, city: city, pro_tip: pro_tip, review: review}
 end
