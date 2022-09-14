@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Homepage from './Homepage';
 import NavBar from './NavBar';
 import ReviewForm from './ReviewForm';
 import Signup from './Signup';
 import Users from './Users';
-// import Reviews from './Reviews';
+import AboutUs from './AboutUs';
 import Destinations from './Destinations';
+import Login from './Login';
 
 function App() {
 
   const [users, setUsers] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [destinations, setDestinations] = useState([]);
+  const [user, setUser] = useState(null)
 
   const fetchData = (urlParams = "", setter) => {
     fetch(`${urlParams}`)
@@ -23,14 +25,24 @@ function App() {
   useEffect(() => {
     fetchData("users", setUsers);
     fetchData("reviews", setReviews);
-    fetchData("destinations", setDestinations)
+    fetchData("destinations", setDestinations);
   }, []);
 
-  // useEffect(() => {
-  //   fetch(`${baseUrl}/destinations`)
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-  // }, [])
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+  
+  function handleLogin(user) {
+    setUser(user);
+  }
+
+  function handleLogout() {
+    setUser(null);
+  }
 
   function renderUsers(user) {
     setUsers([...users, user])
@@ -52,15 +64,17 @@ function App() {
       </header>
       <div id="app-body">
         <Router>
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Homepage />}/>
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/users' element={<Users users={users}/>} />
-          {/* <Route path='/reviews' element={<Reviews reviews={reviews}/>} /> */}
-          <Route path='/create' element={<ReviewForm destinations={destinations}/>} />
-          <Route path='/destinations' element={<Destinations destinations={destinations}/>} />
-        </Routes>
+          <NavBar user={user} onLogout={handleLogout} />
+          <Routes>
+            <Route path='/' element={<Homepage />} />
+            <Route path='/about' element={<AboutUs />} />
+            <Route path='/signup' element={<Signup onLogin={setUser} />} />
+            {user ? (<h2>Welcome, {user.username}!</h2>) : <Route path='/login' element={<Login onLogin={handleLogin} />} />}
+            <Route path='/users' element={<Users users={users} />} />
+            <Route path='/create' element={<ReviewForm destinations={destinations} />} />
+            <Route path='/destinations' element={<Destinations destinations={destinations} />} />
+          </Routes>
+
         </Router>
       </div>
     </div>
