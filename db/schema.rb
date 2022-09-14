@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2022_09_12_171340) do
   create_table "destinations", force: :cascade do |t|
     t.string "country_or_territory"
     t.string "continent"
-    t.string "image_url"
-    t.string "flag_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,7 +39,6 @@ ActiveRecord::Schema.define(version: 2022_09_12_171340) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "avatar"
     t.string "name"
     t.string "email"
     t.string "password_digest"
