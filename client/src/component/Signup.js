@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Label, TextInput, Button } from "flowbite-react"
+import { Label, TextInput, Button, Toast } from "flowbite-react"
+import { useNavigate } from "react-router-dom";
 
 
 function Signup({ onLogin }) {
@@ -9,9 +10,11 @@ function Signup({ onLogin }) {
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [age, setAge] = useState("");
+    const [avatar, setAvatar] = useState("")
     const [location, setLocation] = useState("");
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -28,6 +31,7 @@ function Signup({ onLogin }) {
                 name,
                 password,
                 password_confirmation: passwordConfirmation,
+                avatar,
                 age,
                 location
 
@@ -35,7 +39,7 @@ function Signup({ onLogin }) {
         }).then((r) => {
             setIsLoading(false);
             if (r.ok) {
-                r.json().then((user) => onLogin(user));
+                r.json().then(() => navigate("/login"));
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }
@@ -131,6 +135,20 @@ function Signup({ onLogin }) {
                 <div>
                     <div className="mb-2 block">
                         <Label
+                            htmlFor="avatar"
+                            value="Avatar" />
+                    </div>
+                    <TextInput
+                        id="avatar"
+                        type="url"
+                        value={avatar}
+                        onChange={(e) => setAvatar(e.target.value)}
+                        placeholder="Upload your avatar..."
+                        required={true} />
+                </div>
+                <div>
+                    <div className="mb-2 block">
+                        <Label
                             htmlFor="location"
                             value="Location" />
                     </div>
@@ -146,11 +164,17 @@ function Signup({ onLogin }) {
             <Button type="submit">
                 {isLoading ? "Loading ..." : "Signup"}
             </Button>
-            {/* <div>
-                {errors.map((err) => (
-                    <Error key={err}>{err}</Error>
-                ))}
-            </div> */}
+            { errors ? (
+                <Toast>
+                <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-500 dark:bg-red-800 dark:text-red-200">
+                </div>
+                <div className="ml-3 text-sm font-normal">
+                    {errors}
+                </div>
+                <Toast.Toggle />
+            </Toast>
+            ) : null}
+            
         </form>
     )
 
