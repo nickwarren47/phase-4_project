@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
     # remove :create later once login form has been established
     skip_before_action :authorize, only: [:index, :show]
+    wrap_parameters format: []
 
     def index
         render json: Review.all

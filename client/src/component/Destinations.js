@@ -29,7 +29,7 @@ function Destinations({ destinations, handleDestClick, destReviews }) {
       )
    )
 
-   const destination = destinationList.find(dest => dest.id)
+   // const destination = destinationList.find(dest => dest.id)
    
    return (
 
