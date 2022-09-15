@@ -9,6 +9,7 @@ import AboutUs from './AboutUs';
 import Destinations from './Destinations';
 import Login from './Login';
 import AuthProvider from './AuthProvider';
+import DestReviews from './DestReviews'
 
 function App() {
 
@@ -65,20 +66,20 @@ function App() {
 
       </header>
       <div id="app-body">
-      <AuthProvider>
-        <Router>
-          <NavBar user={user} onLogout={handleLogout} />
-          <Routes>
-            <Route path='/' element={<Homepage />} />
-            <Route path='/about' element={<AboutUs />} />
-            <Route path='/signup' element={<Signup onLogin={setUser} />} />
-            {user ? (<h2>Welcome, {user.username}!</h2>) : <Route path='/login' element={<Login />} />}
-            <Route path='/users' element={<Users users={users} />} />
-            <Route path='/create' element={<ReviewForm destinations={destinations} />} />
-            <Route path='/destinations' element={<Destinations destinations={destinations} handleDestClick={handleDestClick} destReviews={destReviews} />} />
-            {/* <Route path='/destination-reviews' element={<DestReviews destinations={destinations} />} /> */}
-          </Routes>
-        </Router>
+        <AuthProvider>
+          <Router>
+            <NavBar user={user} onLogout={handleLogout} />
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/about' element={<AboutUs />} />
+              <Route path='/signup' element={<Signup onLogin={setUser} />} />
+              {user ? (<h2>Welcome, {user.username}!</h2>) : <Route path='/login' element={<Login />} />}
+              <Route path='/users' element={<Users users={users} />} />
+              <Route path='/create' element={<ReviewForm destinations={destinations} />} />
+              <Route path='/destinations' element={<Destinations destinations={destinations} handleDestClick={handleDestClick} destReviews={destReviews} />} />
+              <Route path='/destination-reviews' element={<DestReviews destinations={destinations} />} />
+            </Routes>
+          </Router>
         </AuthProvider>
       </div>
     </div>
