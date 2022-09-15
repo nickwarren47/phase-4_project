@@ -9,10 +9,9 @@ function DestReviews({ destinations, destReviews }) {
     <ReviewCard   
       country_or_territory={dest.country_or_territory}
       image_url={dest.image_url}
-      reviews={dest.reviews}
+      // reviews={dest.reviews}
       key={dest.id}
-      id={dest.id}
-      />
+      id={dest.id}/>
   ))
   
   return (

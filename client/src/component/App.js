@@ -10,6 +10,7 @@ import Login from './Login';
 import AuthProvider from './AuthProvider';
 import DestReviews from './DestReviews'
 
+
 function App() {
 
   // const [users, setUsers] = useState([]);
@@ -75,8 +76,8 @@ function App() {
               {user ? (<h2>Welcome, {user.username}!</h2>) : <Route path='/login' element={<Login />} />}
               {/* <Route path='/users' element={<Users users={users} />} /> */}
               <Route path='/create' element={<ReviewForm destinations={destinations} />} />
-              <Route path='/destinations' element={<Destinations destinations={destinations} handleDestClick={handleDestClick} destReviews={destReviews} />} />
-              <Route path='/destination-reviews' element={<DestReviews destinations={destinations} destReviews={destReviews} />} />
+              <Route path='/destinations' element={<Destinations destinations={destinations} destReviews={destReviews} />} />
+              <Route path='/destinations/:id' element={<DestReviews destinations={destinations} />} />
             </Routes>
           </Router>
         </AuthProvider>

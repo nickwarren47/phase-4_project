@@ -28,8 +28,6 @@ function Destinations({ destinations, handleDestClick, destReviews }) {
          handleDestClick={handleDestClick} />
       )
    )
-
-   // const destination = destinationList.find(dest => dest.id)
    
    return (
 
