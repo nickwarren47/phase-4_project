@@ -4,4 +4,5 @@ class DestinationSerializer < ActiveModel::Serializer
  
   has_many :reviews
 
+  has_many :reviews
 end

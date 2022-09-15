@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DestinationCard from './DestinationCard'
+import Globe from "../image/Globe.gif"
 
 function Destinations({ destinations, handleDestClick, destReviews }) {
 
@@ -30,19 +31,22 @@ function Destinations({ destinations, handleDestClick, destReviews }) {
 
    const destination = destinationList.find(dest => dest.id)
    
-  return (
+   return (
 
-    <div>
-      <input
-        onChange={handleSearch}
-        type="text"
-        placeholder="Search Destinations"
-      />
-      <div className="flex flex-wrap justify-center">
-         {destinationList}
+      <div>
+         <div className="flex items-center justify-center scale-100 p-5">
+            <img src={Globe} alt="logo" />
+         </div>
+         <input
+            className= "ml-5"
+            onChange={handleSearch}
+            type="text"
+            placeholder="Search Destinations"/>
+         <div className="flex flex-wrap justify-center">
+            {destinationList}
+         </div>
       </div>
-   </div>
-  )
+   )
 }
 
 export default Destinations;
