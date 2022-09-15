@@ -1,9 +1,11 @@
 import React from 'react'
 import ReviewCard from './ReviewCard'
 
-function DestReviews({ destinations }) {
+function DestReviews({ destinations, destReviews }) {
 
-  const destinationReviewList = destinations.map(dest => (
+  console.log(destReviews)
+
+  const destinationReviewList = destReviews.map(dest => (
     <ReviewCard   
       country_or_territory={dest.country_or_territory}
       image_url={dest.image_url}

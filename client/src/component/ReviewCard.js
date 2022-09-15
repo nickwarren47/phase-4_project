@@ -1,9 +1,9 @@
 import React from 'react'
 import { Card } from 'flowbite-react';
 
-function ReviewCard({ country_or_territory, image_url, reviews }) {
+function ReviewCard({ country_or_territory, image_url, destReviews }) {
 
-   console.log(reviews)
+   // console.log()
 
    
    return (
@@ -13,7 +13,7 @@ function ReviewCard({ country_or_territory, image_url, reviews }) {
             {country_or_territory}
          </h5>
          <p className="font-normal text-gray-700 dark:text-gray-400">
-            Reviews
+            {destReviews}
          </p>
       </Card>
    </div>

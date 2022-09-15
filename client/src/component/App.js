@@ -4,7 +4,6 @@ import Homepage from './Homepage';
 import NavBar from './NavBar';
 import ReviewForm from './ReviewForm';
 import Signup from './Signup';
-import Users from './Users';
 import AboutUs from './AboutUs';
 import Destinations from './Destinations';
 import Login from './Login';
@@ -13,8 +12,8 @@ import DestReviews from './DestReviews'
 
 function App() {
 
-  const [users, setUsers] = useState([]);
-  const [reviews, setReviews] = useState([]);
+  // const [users, setUsers] = useState([]);
+  // const [reviews, setReviews] = useState([]);
   const [destinations, setDestinations] = useState([]);
   const [user, setUser] = useState(null)
   const [destReviews, setDestReviews] = useState([])
@@ -26,8 +25,8 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData("users", setUsers);
-    fetchData("reviews", setReviews);
+    // fetchData("users", setUsers);
+    // fetchData("reviews", setReviews);
     fetchData("destinations", setDestinations);
   }, []);
 
@@ -43,17 +42,17 @@ function App() {
     setUser(null);
   }
 
-  function renderUsers(user) {
-    setUsers([...users, user])
-  }
+  // function renderUsers(user) {
+  //   setUsers([...users, user])
+  // }
 
   function renderDestinations(destination) {
-    setUsers([...users, destination])
+    setDestinations([...destinations, destination])
   }
 
-  function renderReviews(review) {
-    setReviews([...reviews, review])
-  }
+  // function renderReviews(review) {
+  //   setReviews([...reviews, review])
+  // }
 
   function handleDestClick(e) {
     fetchData(`destinations/${e.target.id}`, setDestReviews)
@@ -74,10 +73,10 @@ function App() {
               <Route path='/about' element={<AboutUs />} />
               <Route path='/signup' element={<Signup onLogin={setUser} />} />
               {user ? (<h2>Welcome, {user.username}!</h2>) : <Route path='/login' element={<Login />} />}
-              <Route path='/users' element={<Users users={users} />} />
+              {/* <Route path='/users' element={<Users users={users} />} /> */}
               <Route path='/create' element={<ReviewForm destinations={destinations} />} />
               <Route path='/destinations' element={<Destinations destinations={destinations} handleDestClick={handleDestClick} destReviews={destReviews} />} />
-              <Route path='/destination-reviews' element={<DestReviews destinations={destinations} />} />
+              <Route path='/destination-reviews' element={<DestReviews destinations={destinations} destReviews={destReviews} />} />
             </Routes>
           </Router>
         </AuthProvider>
