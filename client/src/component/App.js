@@ -16,6 +16,7 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [destinations, setDestinations] = useState([]);
   const [user, setUser] = useState(null)
+  const [destReviews, setDestReviews] = useState([])
 
   const fetchData = (urlParams = "", setter) => {
     fetch(`${urlParams}`)
@@ -53,6 +54,10 @@ function App() {
     setReviews([...reviews, review])
   }
 
+  function handleDestClick(e) {
+    fetchData(`destinations/${e.target.id}`, setDestReviews)
+  }
+
   return (
 
     <div className="App">
@@ -70,7 +75,8 @@ function App() {
             {user ? (<h2>Welcome, {user.username}!</h2>) : <Route path='/login' element={<Login />} />}
             <Route path='/users' element={<Users users={users} />} />
             <Route path='/create' element={<ReviewForm destinations={destinations} />} />
-            <Route path='/destinations' element={<Destinations destinations={destinations} />} />
+            <Route path='/destinations' element={<Destinations destinations={destinations} handleDestClick={handleDestClick} destReviews={destReviews} />} />
+            {/* <Route path='/destination-reviews' element={<DestReviews destinations={destinations} />} /> */}
           </Routes>
         </Router>
         </AuthProvider>

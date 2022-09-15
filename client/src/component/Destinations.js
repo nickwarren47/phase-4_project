@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import DestinationCard from './DestinationCard'
 
-function Destinations({ destinations }) {
+function Destinations({ destinations, handleDestClick, destReviews }) {
 
    const [search, setSearch] = useState("")
 
@@ -19,11 +19,16 @@ function Destinations({ destinations }) {
          country_or_territory={dest.country_or_territory}
          continent={dest.continent}
          flag_url={dest.flag_url}
+         image_url={dest.image_url}
+         reviews={dest.reviews}
+         destReviews={dest.destReviews}
          key={dest.id}
          id={dest.id}
-      />
+         handleDestClick={handleDestClick} />
       )
    )
+
+   const destination = destinationList.find(dest => dest.id)
    
   return (
 
