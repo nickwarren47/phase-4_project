@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useContext } from "react"
 import { Label, Select, TextInput, Textarea, Button } from "flowbite-react"
+import { AuthContext } from "../Context/AuthContext"
 
 function ReviewForm({ destinations }) {
 
@@ -10,6 +11,7 @@ function ReviewForm({ destinations }) {
     const [image, setImage] = useState("")
     const [review, setReview] = useState("")
     const [proTip, setProTip] = useState("")
+    const { user } = useContext(AuthContext);
 
     const destinationOptions = destinations
         .map(destination => {
@@ -36,7 +38,7 @@ function ReviewForm({ destinations }) {
                 "pro_tip": proTip,
                 "length_of_stay": lengthOfStay,
                 "city": city,
-                "user_id": 1,
+                "user_id": user.id,
                 "destination_id": countryID
             }),
         })

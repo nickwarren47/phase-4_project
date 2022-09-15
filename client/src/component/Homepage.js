@@ -1,9 +1,13 @@
-import React from "react";
+
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom"
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Carousel } from "flowbite-react"
+import { AuthContext } from "../Context/AuthContext"
+
 
 function Homepage() {
+
+    const { user } = useContext(AuthContext);
 
     return (
         <div id='hompage'>
@@ -14,17 +18,19 @@ function Homepage() {
                 <h1 className='text-sky-500 text-7xl font-bold mt-12 text-center p-5'>Welcome to Wanderlust!</h1>
                 <h2 className="text-sky-500 text-4xl font-light mt-5 text-center"> Your place to find a place</h2>
                 <div className="flex items-center justify-center mt-7 space-x-7">
-                    <div className="flex flex-wrap gap-2">
-                        <TailwindcssButton>
-                            <Link to="/destinations"> Let's Get Out There! </Link>
-                        </TailwindcssButton>
-                        <TailwindcssButton>
-                            <Link to="/login"> User Login </Link>
-                        </TailwindcssButton>
-                        <TailwindcssButton>
-                            <Link to="/signup"> User Sign Up </Link>
-                        </TailwindcssButton>
-                    </div>
+                    <TailwindcssButton>
+                        <Link to="/destinations"> Let's Get Out There! </Link>
+                    </TailwindcssButton>
+                    {!user ? (
+                        <>
+                            <TailwindcssButton>
+                                <Link to="/login"> User Login </Link>
+                            </TailwindcssButton>
+                            <TailwindcssButton>
+                                <Link to="/signup"> User Sign Up </Link>
+                            </TailwindcssButton>
+                        </>
+                    ) : null}
                 </div>
             </div>
             <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
