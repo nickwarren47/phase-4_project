@@ -81,7 +81,7 @@ function NavBar() {
 
                         <Navbar.Link
                             active={location.pathname === "/create"}>
-                            <Link to="/create"> Add A Review! </Link>
+                            {user ? (<Link to="/create"> Add A Review! </Link>) : null}
                         </Navbar.Link>
 
                         <Navbar.Link
