@@ -2,7 +2,7 @@ puts "Seeding..."
 
 user1 = User.create(name: "Charlie Brown", username: "Snoopy", email: Faker::Internet.free_email, password: "12345678", age: 20, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 user2 = User.create(name: "Sherlock Holmes", username: "221B", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
-user3 = User.create(name: "John Mycroft", username: "TheDoctor", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
+user3 = User.create(name: "John Watson", username: "TheDoctor", email: Faker::Internet.free_email, password: "12345678", age: 35, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 user4 = User.create(name: "Arya Stark", username: "Has_No_Name", email: Faker::Internet.free_email, password: "ABC12345678!", age: 20, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 user5 = User.create(name: "Jon Snow", username: "Ice_and_Fire", email: Faker::Internet.free_email, password: "ABC12345678!", age: 25, location: Faker::Nation.capital_city, avatar: Faker::Avatar.image(size: "50x50", format: 'png'))
 
@@ -24,7 +24,7 @@ def review_template
    pro_tip = Faker::Hipster.sentence(word_count: 2)
    length_of_stay = Faker::Number.between(from: 1, to: 99)
    city = Faker::Address.city
-   destination_id = Faker::Number.between(from: 1, to: 25)
+   destination_id = Faker::Number.between(from: 1, to: 41)
    user_id = Faker::Number.between(from: 1, to: 25)
    {rating: rating, image_url: image_url, destination_id: destination_id, user_id: user_id, length_of_stay: length_of_stay, city: city, pro_tip: pro_tip, review: review}
 end
@@ -63,7 +63,7 @@ d32 = Destination.create(country_or_territory: "Japan", continent: "Asia", image
 d33 = Destination.create(country_or_territory: "Taiwan", continent: "Asia", image_url: "https://user-images.githubusercontent.com/106715328/190237017-6ed51e60-3ebf-41a5-8a98-bba481f5b3e1.jpg", flag_url: "https://user-images.githubusercontent.com/106715328/190237070-8daa6b7c-7fca-43a5-b4f7-80bec5d7f5f7.png")
 d34 = Destination.create(country_or_territory: "Vietnam", continent: "Asia", image_url: "https://user-images.githubusercontent.com/106715328/190237179-e4d636e8-35fb-496f-af9c-888a24cc4728.jpg", flag_url: "https://user-images.githubusercontent.com/106715328/190237181-51ac27be-3b87-4d7d-97e3-93d2027417c9.png")
 d35 = Destination.create(country_or_territory: "Indonesia", continent: "Asia", image_url: "https://user-images.githubusercontent.com/106715328/190237281-61339796-a146-448c-bf8b-2923f1efba7d.jpg", flag_url: "https://user-images.githubusercontent.com/106715328/190237282-674d7046-9260-4120-a9ec-5d445bb74ccc.png")
-d36 = Destination.create(country_or_territory: "Philippines", continent: "Asia", image_url: "https://user-images.githubusercontent.com/106715328/190242142-6c778885-67de-4600-afde-3bc2320f9ba2.jpg", flag_url: "https://user-images.githubusercontent.com/106715328/190237425-88d9f8ed-f4f0-4476-ab3e-6c55473ab876.jpg")
+d36 = Destination.create(country_or_territory: "Philippines", continent: "Asia", image_url: "https://user-images.githubusercontent.com/106715328/190237425-88d9f8ed-f4f0-4476-ab3e-6c55473ab876.jpg", flag_url: "https://user-images.githubusercontent.com/106715328/190278583-b4f5bfab-7267-4b48-bf34-ae7b839ced4e.jpg")
 d37 = Destination.create(country_or_territory: "Malaysia", continent: "Asia", image_url: "https://user-images.githubusercontent.com/106715328/190237501-6f709eeb-e503-49c5-9d50-e3d819c929a5.jpg", flag_url: "https://user-images.githubusercontent.com/106715328/190242106-ba006134-91b4-4c9f-9e56-147a6d69f216.jpg")
 d38 = Destination.create(country_or_territory: "Australia", continent: "Oceania", image_url: "https://user-images.githubusercontent.com/106715328/190237703-a12b56ae-1651-412f-bcdd-82a85387ac84.jpg", flag_url: "https://user-images.githubusercontent.com/106715328/190237756-38eb81de-399a-4a3a-99d7-b729bf45893d.png")
 d39 = Destination.create(country_or_territory: "New Zealand", continent: "Oceania", image_url: "https://user-images.githubusercontent.com/106715328/190237825-526c0a74-8929-4ce9-ac2e-ff27799db389.jpg", flag_url: "https://user-images.githubusercontent.com/106715328/190237828-a19de5fd-6c71-413d-a6a5-2d9b8e82a167.png")
