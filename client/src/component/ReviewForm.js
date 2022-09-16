@@ -1,18 +1,38 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { Label, Select, TextInput, Textarea, Button } from "flowbite-react"
 import { AuthContext } from "../Context/AuthContext"
 import Review from "../image/Review.gif"
 
-function ReviewForm({ destinations, destinationID, onReviewAdd, isModal = false }) {
+function ReviewForm({ destinations, destinationID, onReviewAdd, reviewToUpdate, isModal = false }) {
 
+    console.log('reviewtoupdate', reviewToUpdate)
     const [countryID, setCountryID] = useState(destinationID)
-    const [rating, setRating] = useState("")
+    const [rating, setRating] = useState(1)
     const [city, setCity] = useState("")
     const [lengthOfStay, setLengthOfStay] = useState("")
     const [image, setImage] = useState("")
     const [review, setReview] = useState("")
     const [proTip, setProTip] = useState("")
     const { user } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (reviewToUpdate !== null) {
+            setRating(reviewToUpdate.rating)
+            setCity(reviewToUpdate.city)
+            setLengthOfStay(reviewToUpdate.length_of_stay)
+            setImage(reviewToUpdate.image_url)
+            setReview(reviewToUpdate.review)
+            setProTip(reviewToUpdate.pro_tip)
+        }
+        else {
+            setRating(1)
+            setCity("")
+            setLengthOfStay("")
+            setImage("")
+            setReview("")
+            setProTip("")
+        }
+    }, [reviewToUpdate])
 
     const destinationOptions = destinations ? destinations
         .map(destination => {
@@ -166,12 +186,12 @@ function ReviewForm({ destinations, destinationID, onReviewAdd, isModal = false 
                     </div>
                 </form>
                 <div className="m-1">
-                <Button
-                    color="dark"
-                    pill={true}
-                    onClick={handleSubmit}>
-                    Submit
-                </Button>
+                    <Button
+                        color="dark"
+                        pill={true}
+                        onClick={handleSubmit}>
+                        Submit
+                    </Button>
                 </div>
             </div>
         </div>
