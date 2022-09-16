@@ -84,8 +84,10 @@ function ReviewForm({
             })
     }
 
+    const bgClass = isModal ? "" : "bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/just-waves.png')] min-h-screen";
+
     return (
-        <div className="bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/just-waves.png')] min-h-screen">
+        <div className={bgClass}>
             {!isModal ? (
                 <div className="flex items-center justify-center scale-100 p-5">
                     <img className="rounded-lg border-4 border-black" src={Review} alt="logo" />
