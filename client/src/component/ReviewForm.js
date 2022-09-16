@@ -189,7 +189,7 @@ function ReviewForm({
                         </div>
                         <Textarea
                             id="comment"
-                            placeholder="Leave a professional tip..."
+                            placeholder="Leave a travel tip for future visitors..."
                             required={true}
                             value={proTip}
                             onChange={(e) => setProTip(e.target.value)}

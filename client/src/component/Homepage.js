@@ -48,15 +48,15 @@ function Homepage() {
                         alt="..."
                     />
                     <img
-                        src="https://user-images.githubusercontent.com/106715328/190223547-c1adab67-5f93-4d06-926a-ecc8cb9c4812.jpg"
+                        src="https://user-images.githubusercontent.com/106715328/190532997-a08d1f1f-81f5-4922-80fd-0de1572f6e3a.png"
                         alt="..."
                     />
                     <img
-                        src="https://user-images.githubusercontent.com/106715328/190232040-56bf9150-9da6-443a-9f3c-e45b464814a9.jpg"
+                        src="https://user-images.githubusercontent.com/106715328/190531597-a7d960cc-4b8a-435e-a377-f4342a12a030.png"
                         alt="..."
                     />
                     <img
-                        src="https://user-images.githubusercontent.com/106715328/190223547-c1adab67-5f93-4d06-926a-ecc8cb9c4812.jpg"
+                        src="https://user-images.githubusercontent.com/106715328/190532545-c0a855be-57ab-4667-ad83-c0ebab919789.png"
                         alt="..."
                     />
                 </Carousel>

@@ -1,7 +1,8 @@
 import React from 'react'
 import
 
-function DestReviews({ destinations }) {
+function DestReviews({ destinations, destReviews }) {
+
 
   // const destinationReviewList = destinations.map(dest => (
   //   <ReviewCard   
@@ -11,6 +12,7 @@ function DestReviews({ destinations }) {
   //     key={dest.id}
   //     id={dest.id}/>
   // ))
+
   
   // return (
   //   <div>
