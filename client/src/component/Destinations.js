@@ -31,12 +31,12 @@ function Destinations({ destinations, handleDestClick, destReviews }) {
    
    return (
 
-      <div>
+      <div className="bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/just-waves.png')]">
          <div className="flex items-center justify-center scale-100 p-5">
             <img src={Globe} alt="logo" />
          </div>
          <input
-            className= "ml-5"
+            className= "ml-5 "
             onChange={handleSearch}
             type="text"
             placeholder="Search Destinations"/>
