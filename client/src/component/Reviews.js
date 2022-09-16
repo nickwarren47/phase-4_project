@@ -48,30 +48,16 @@ function Reviews({ destination }) {
         toggleModal()
     }
 
-    // useEffect(() => {
-    //     if (reviewToUpdate.id && !modalShown) {
-    //         setModalShown(true)
-    //     }
-    // }, [reviewToUpdate])
-
-    // function handleUpdate (review, event) {
-    //     event.preventDefault();
-
-    //     fetch(`reviews/${animalId}`, {
-    //         method: "PATCH",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             "adopted?": true,
-    //             "user_id": loginUserId,
-    //         }),
-    //     })
-    //         .then((r) => r.json())
-    //         .then((data) => {
-    //             setAnimal(data)
-    //         })
-    // }
+    function onReviewUpdate (updatedReview) {
+        const list = listOfReviews.map(review => {
+            if (review.id === updatedReview.id) {
+                return updatedReview
+            }
+            return review
+        })
+        setListOfReviews(list);
+        setModalShown(false);
+    }
 
     return (
         <>
@@ -128,17 +114,21 @@ function Reviews({ destination }) {
                     Add your Review for {destination.country_or_territory}!
                 </Modal.Header>
                 <Modal.Body>
-                    <ReviewForm 
-                        onReviewAdd={onReviewAdd} 
+                    {reviewToUpdate ? 
+                    (<ReviewForm 
+                        onReviewUpdate={onReviewUpdate}
                         destinationID={destination.id} 
                         isModal={true} 
                         reviewToUpdate={reviewToUpdate} />
+                    ) : (
+                        <ReviewForm 
+                        onReviewAdd={onReviewAdd} 
+                        destinationID={destination.id} 
+                        isModal={true} />
+                    ) }
                 </Modal.Body>
             </Modal>
-
         </>
-
-
     )
 }
 

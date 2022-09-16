@@ -3,9 +3,14 @@ import { Label, Select, TextInput, Textarea, Button } from "flowbite-react"
 import { AuthContext } from "../Context/AuthContext"
 import Review from "../image/Review.gif"
 
-function ReviewForm({ destinations, destinationID, onReviewAdd, reviewToUpdate, isModal = false }) {
+function ReviewForm({ 
+    destinations, 
+    destinationID, 
+    onReviewAdd, 
+    onReviewUpdate,
+    reviewToUpdate = null, 
+    isModal = false }) {
 
-    console.log('reviewtoupdate', reviewToUpdate)
     const [countryID, setCountryID] = useState(destinationID)
     const [rating, setRating] = useState(1)
     const [city, setCity] = useState("")
@@ -47,8 +52,11 @@ function ReviewForm({ destinations, destinationID, onReviewAdd, reviewToUpdate, 
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("/reviews", {
-            method: "POST",
+        const method = reviewToUpdate !== null ? "PATCH" : "POST"
+        const url = reviewToUpdate !== null ? `/reviews/${reviewToUpdate.id}` : "/reviews"
+
+        fetch(url, {
+            method: method,
             headers: {
                 "Content-Type": "application/json"
             },
@@ -66,6 +74,9 @@ function ReviewForm({ destinations, destinationID, onReviewAdd, reviewToUpdate, 
             .then((data) => {
                 if (onReviewAdd) {
                     onReviewAdd(data)
+                }
+                else if (onReviewUpdate) {
+                    onReviewUpdate(data)
                 }
                 else {
                     alert("New review created!")
