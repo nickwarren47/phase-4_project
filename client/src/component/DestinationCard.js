@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from "flowbite-react"
 import { useNavigate } from 'react-router-dom'
 
-function DestinationCard({ id, country_or_territory, continent, flag_url, handleDestClick, image_url, reviews, destReviews }) {
+function DestinationCard({ id, country_or_territory, continent, flag_url }) {
 
   let navigate = useNavigate()
 

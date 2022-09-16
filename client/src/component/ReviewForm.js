@@ -3,9 +3,9 @@ import { Label, Select, TextInput, Textarea, Button } from "flowbite-react"
 import { AuthContext } from "../Context/AuthContext"
 import Review from "../image/Review.gif"
 
-function ReviewForm({ destinations }) {
+function ReviewForm({ destinations, destinationID, onReviewAdd, isModal = false }) {
 
-    const [countryID, setCountryID] = useState("")
+    const [countryID, setCountryID] = useState(destinationID)
     const [rating, setRating] = useState("")
     const [city, setCity] = useState("")
     const [lengthOfStay, setLengthOfStay] = useState("")
@@ -14,7 +14,7 @@ function ReviewForm({ destinations }) {
     const [proTip, setProTip] = useState("")
     const { user } = useContext(AuthContext);
 
-    const destinationOptions = destinations
+    const destinationOptions = destinations ? destinations
         .map(destination => {
             return (
                 <option
@@ -23,11 +23,11 @@ function ReviewForm({ destinations }) {
                     {destination.country_or_territory}
                 </option>
             )
-        })
+        }) : null;
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("reviews", {
+        fetch("/reviews", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -39,36 +39,45 @@ function ReviewForm({ destinations }) {
                 "pro_tip": proTip,
                 "length_of_stay": lengthOfStay,
                 "city": city,
-                "user_id": user.id,
                 "destination_id": countryID
             }),
         })
             .then((r) => r.json())
             .then((data) => {
-                console.log(data)
+                if (onReviewAdd) {
+                    onReviewAdd(data)
+                }
+                else {
+                    alert("New review created!")
+                }
             })
     }
 
     return (
         <div>
-            <div className="flex items-center justify-center scale-100 p-5">
-                <img src={Review} alt="logo" />
-            </div>
-            <div className="p-5 mx-20 my-20 border-2 border-black">
-                <div id="select">
-                    <div className="mb-2 block">
-                        <Label
-                            htmlFor="country"
-                            value="Select your destination!" />
-                    </div>
-                    <Select
-                        id="country"
-                        required={true}
-                        value={countryID}
-                        onChange={(e) => setCountryID(e.target.value)}>
-                        {destinationOptions}
-                    </Select>
+            {!isModal ? (
+                <div className="flex items-center justify-center scale-100 p-5">
+                    <img src={Review} alt="logo" />
                 </div>
+            ) : null}
+            <div className={!isModal ? "p-5 mx-20 my-20 border-2 border-black" : ""}>
+                {destinations ? (
+                    <div id="select">
+                        <div className="mb-2 block">
+                            <Label
+                                htmlFor="country"
+                                value="Select your destination!" />
+                        </div>
+                        <Select
+                            id="country"
+                            required={true}
+                            value={countryID}
+                            onChange={(e) => setCountryID(e.target.value)}>
+                            {destinationOptions}
+                        </Select>
+                    </div>
+                ) : null}
+
                 <div>
                     <div className="mb-2 block">
                         <Label
@@ -156,12 +165,14 @@ function ReviewForm({ destinations }) {
                             rows={4} />
                     </div>
                 </form>
+                <div className="m-1">
                 <Button
                     color="dark"
                     pill={true}
                     onClick={handleSubmit}>
                     Submit
                 </Button>
+                </div>
             </div>
         </div>
     )

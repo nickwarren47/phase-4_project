@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import DestinationCard from './DestinationCard'
 import Globe from "../image/Globe.gif"
 
-function Destinations({ destinations, handleDestClick, destReviews }) {
+function Destinations({ destinations, handleDestClick }) {
 
    const [search, setSearch] = useState("")
 
@@ -22,7 +22,6 @@ function Destinations({ destinations, handleDestClick, destReviews }) {
          flag_url={dest.flag_url}
          image_url={dest.image_url}
          reviews={dest.reviews}
-         destReviews={dest.destReviews}
          key={dest.id}
          id={dest.id}
          handleDestClick={handleDestClick} />
