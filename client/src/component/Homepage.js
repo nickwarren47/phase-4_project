@@ -1,6 +1,6 @@
 
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Carousel } from "flowbite-react"
 import { AuthContext } from "../Context/AuthContext"
 import banner from "../image/banner.gif"
@@ -10,10 +10,10 @@ function Homepage() {
     const { user } = useContext(AuthContext);
 
     return (
-        <div id='hompage'>
+        <div id='homepage'>
             <div className='bg-[url(https://user-images.githubusercontent.com/106715328/189964202-fef8374d-3e12-4b80-a381-4323525f8ba7.jpg)] h-400 w-full bg-cover bg-center p-20'>
                 <div className="flex items-center justify-center scale-125 p-5">
-                    <img src={banner} alt="logo" />
+                    <img className="rounded-lg border-4 border-black" src={banner} alt="logo" />
                 </div>
                 <h1 className='text-green-700 text-7xl font-bold mt-12 text-center p-0'>Welcome to Wanderlust!</h1>
                 <h2 className="text-green-700 text-5xl font-bold mt-5 text-center pt-0"> Your place to find a place</h2>
@@ -64,7 +64,6 @@ function Homepage() {
         </div>
         
     )
-
 
     function TailwindcssButton(props) {
         return (

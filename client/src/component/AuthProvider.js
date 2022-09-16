@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 
-
 function AuthProvider({ children }) {
     let [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 

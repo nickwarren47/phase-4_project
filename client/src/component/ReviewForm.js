@@ -85,13 +85,13 @@ function ReviewForm({
     }
 
     return (
-        <div>
+        <div className="bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/just-waves.png')] min-h-screen">
             {!isModal ? (
                 <div className="flex items-center justify-center scale-100 p-5">
-                    <img src={Review} alt="logo" />
+                    <img className="rounded-lg border-4 border-black" src={Review} alt="logo" />
                 </div>
             ) : null}
-            <div className={!isModal ? "p-5 mx-20 my-20 border-2 border-black" : ""}>
+            <div className={!isModal ? "p-5 mt-4 ml-20 mr-20 border-2 border-black bg-white" : ""}>
                 {destinations ? (
                     <div id="select">
                         <div className="mb-2 block">
@@ -108,9 +108,10 @@ function ReviewForm({
                         </Select>
                     </div>
                 ) : null}
-
-                <div>
-                    <div className="mb-2 block">
+                
+                <form className="flex flex-col gap-4 bg-white">
+                    <div>
+                    <div className="mb-2 block bg-white">
                         <Label
                             htmlFor="base"
                             value="Rating (1-5)" />
@@ -123,9 +124,6 @@ function ReviewForm({
                         max="5"
                         value={rating}
                         onChange={(e) => setRating(e.target.value)} />
-                </div>
-                <form className="flex flex-col gap-4">
-                    <div>
                         <div className="mb-2 block">
                             <Label
                                 htmlFor="city"
@@ -195,19 +193,18 @@ function ReviewForm({
                             onChange={(e) => setProTip(e.target.value)}
                             rows={4} />
                     </div>
-                </form>
-                <div className="m-1">
+                    <div className="m-1">
                     <Button
                         color="dark"
                         pill={true}
                         onClick={handleSubmit}>
                         Submit
                     </Button>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     )
 }
-
 
 export default ReviewForm

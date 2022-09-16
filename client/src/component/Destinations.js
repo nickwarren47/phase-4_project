@@ -32,13 +32,15 @@ function Destinations({ destinations, handleDestClick }) {
 
       <div className="bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/just-waves.png')]">
          <div className="flex items-center justify-center scale-100 p-5">
-            <img src={Globe} alt="logo" />
+            <img className="rounded-lg border-4 border-black" src={Globe} alt="logo" />
          </div>
+         <div className="flex items-center justify-center">
          <input
-            className= "ml-5 "
+            className= "ml-5"
             onChange={handleSearch}
             type="text"
             placeholder="Search Destinations"/>
+         </div>
          <div className="flex flex-wrap justify-center">
             {destinationList}
          </div>

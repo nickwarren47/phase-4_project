@@ -12,7 +12,6 @@ function NavBar() {
     const [isNavBarHidden, setIsNavBarHidden] = useState(true)
     const { user, signout } = useContext(AuthContext);
 
-
     let location = useLocation();
 
     useEffect(() => {
@@ -24,7 +23,7 @@ function NavBar() {
         }
     }, [location]);
 
-    // Change this fx later
+    // DON'T change this f(x) later
     function handleLogout() {
        signout().then(() => navigate("/"))
     }
@@ -55,7 +54,7 @@ function NavBar() {
                                             {user.username}
                                         </span>
                                         <span className="block truncate text-sm font-medium">
-                                            {user.name}
+                                            Hello, {user.name}!
                                         </span>
                                     </Dropdown.Header>
                                     <Dropdown.Item onClick={handleLogout}>

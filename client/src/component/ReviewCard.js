@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { Card } from 'flowbite-react';
 import Reviews from './Reviews';
 
-function ReviewCard({ destinations }) {
+function ReviewCard() {
 
    const params = useParams();
    const destinationID = parseInt(params.id)
@@ -20,8 +20,8 @@ function ReviewCard({ destinations }) {
    return (
       <>
          {destination ? (
-            <div className='review-section'>
-               <div className="max-w-sm review-card">
+            <div className='review-section bg-[url("https://www.toptal.com/designers/subtlepatterns/uploads/just-waves.png")] min-h-screen'>
+               <div className="max-w-sm review-card m-4">
                   <Card imgSrc={destination.image_url}>
                      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                         {destination.country_or_territory}
@@ -35,7 +35,6 @@ function ReviewCard({ destinations }) {
 
          ) : null};
       </>
-
    )
 }
 

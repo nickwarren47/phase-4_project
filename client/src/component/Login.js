@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
-import { Label, TextInput, Button, Toast } from "flowbite-react"
+import { Label, TextInput, Button, Toast, Navbar } from "flowbite-react"
 import { AuthContext } from "../Context/AuthContext";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import Cursor from "../image/Cursor.gif"
+import Logo from "../image/Logo.png"
 
 function Login() {
   const [username, setUsername] = useState("")
@@ -25,17 +26,22 @@ function Login() {
           navigate(from, { replace: true });
         }
       })
-    // .catch((error) => {
-
-    // })
   }
 
   return (
-    <div>
+    <div className="bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/just-waves.png')] min-h-screen">
+      <Navbar.Brand>
+        <Link to="/">
+            <img
+                src={Logo}
+                className="mr-3 h-6 sm:h-20 rounded-lg m-4"
+                alt="Wanderlust Logo" />
+        </Link>
+      </Navbar.Brand>
       <div className="flex items-center justify-center scale-100 p-5">
-        <img src={Cursor} alt="logo" />
+        <img className="rounded-lg border-4 border-black" src={Cursor} alt="logo" />
       </div>
-      <div className="p-5 mx-20 my-20 border-2 border-black">
+      <div className="p-5 mx-20 my-4 border-2 border-black bg-white">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">

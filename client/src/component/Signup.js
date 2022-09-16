@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Label, TextInput, Button, Toast } from "flowbite-react"
-import { useNavigate } from "react-router-dom";
+import { Label, TextInput, Button, Toast, Navbar } from "flowbite-react"
+import { useNavigate, Link } from "react-router-dom";
 import Pen from "../image/Pen.gif"
+import Logo from "../image/Logo.png"
 
-
-function Signup({ onLogin }) {
+function Signup() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -35,9 +35,9 @@ function Signup({ onLogin }) {
                 avatar,
                 age,
                 location
-
             }),
-        }).then((r) => {
+        })
+        .then((r) => {
             setIsLoading(false);
             if (r.ok) {
                 r.json().then(() => navigate("/login"));
@@ -48,11 +48,19 @@ function Signup({ onLogin }) {
     }
 
     return (
-        <div>
+        <div className="bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/just-waves.png')] min-h-screen">
+            <Navbar.Brand>
+                <Link to="/">
+                    <img
+                        src={Logo}
+                        className="mr-3 h-6 sm:h-20 rounded-lg m-4"
+                        alt="Wanderlust Logo" />
+                </Link>
+            </Navbar.Brand>
             <div className="flex items-center justify-center scale-100 p-5">
-                <img src={Pen} alt="logo" />
+                <img className="rounded-lg border-4 border-black" src={Pen} alt="logo" />
             </div>
-            <div className="p-5 mx-20 my-20 border-2 border-black">
+            <div className="p-5 mx-20 my-4 mb-0 border-2 border-black bg-white ">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
                     <div className="mb-2 block">
@@ -184,7 +192,6 @@ function Signup({ onLogin }) {
             </div>
         </div>
     )
-
 }
 
 export default Signup;

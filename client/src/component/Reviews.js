@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Modal } from 'flowbite-react';
 import ReviewForm from './ReviewForm';
 import { AuthContext } from "../Context/AuthContext"
@@ -13,7 +13,6 @@ function Reviews({ destination }) {
     const navigate = useNavigate();
 
     const { user } = useContext(AuthContext);
-
 
     function toggleModal() {
         setModalShown(!modalShown);
@@ -67,8 +66,8 @@ function Reviews({ destination }) {
     }
 
     return (
-        <>
-            <h2>✨Reviews✨</h2>
+        <div className="bg-white my-4 p-2 border-2 rounded-md border-black">
+            <h2><b>✨Reviews✨</b></h2>
             <ul>
                 {listOfReviews.map((review, index) => {
                     return (
@@ -78,11 +77,11 @@ function Reviews({ destination }) {
                                     <b>{review.user.username} </b>
                                     ({review.user.location}) says:
                                 </div>
-                                <div> Rating: <b>{review.rating}</b> </div>
+                                <div> Rating: <b>{review.rating}/5</b> </div>
                                 <div> City: <b>{review.city}</b> </div>
                                 <div> Length of Stay (days): {review.length_of_stay} </div>
                                 <div>
-                                    <b>Instagram Moment!</b> <img className="border-2 border-black" src={review.image_url} />
+                                    <b>Instagram Moment!</b> <img className="border-2 border-black" src={review.image_url} alt="review"/>
                                 </div>
                                 <div> <b>Review:</b> {review.review}</div>
                                 <div> <b>Pro-Tip!</b> {review.pro_tip} </div>
@@ -136,7 +135,7 @@ function Reviews({ destination }) {
                     ) }
                 </Modal.Body>
             </Modal>
-        </>
+        </div>
     )
 }
 
