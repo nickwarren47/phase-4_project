@@ -9,7 +9,8 @@ import AboutUs from './AboutUs';
 import Destinations from './Destinations';
 import Login from './Login';
 import AuthProvider from './AuthProvider';
-import DestReviews from './DestReviews'
+import ReviewCard from "./ReviewCard"
+// import DestReviews from './DestReviews'
 
 
 function App() {
@@ -20,17 +21,23 @@ function App() {
   const [user, setUser] = useState(null)
   const [destReviews, setDestReviews] = useState([])
 
-  const fetchData = (urlParams = "", setter) => {
-    fetch(`${urlParams}`)
-      .then((res) => res.json())
-      .then((data) => setter(data));
-  };
+  // const fetchData = (urlParams = "", setter) => {
+  //   fetch(`${urlParams}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setter(data));
+  // };
+
+  // useEffect(() => {
+  //   fetchData("users", setUsers);
+  //   fetchData("reviews", setReviews);
+  //   fetchData("destinations", setDestinations);
+  // }, []);
 
   useEffect(() => {
-    fetchData("users", setUsers);
-    fetchData("reviews", setReviews);
-    fetchData("destinations", setDestinations);
-  }, []);
+    fetch("/destinations")
+      .then(data => data.json())
+      .then(data => setDestinations(data))
+  }, [])
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -56,9 +63,9 @@ function App() {
     setReviews([...reviews, review])
   }
 
-  function handleDestClick(e) {
-    fetchData(`destinations/${e.target.id}`, setDestReviews)
-  }
+  // function handleDestClick(e) {
+  //   fetchData(`destinations/${e.target.id}`, setDestReviews)
+  // }
 
   return (
 
@@ -78,7 +85,7 @@ function App() {
               <Route path='/users' element={<Users users={users} />} />
               <Route path='/create' element={<ReviewForm destinations={destinations} />} />
               <Route path='/destinations' element={<Destinations destinations={destinations} destReviews={destReviews} />} />
-              <Route path='/destinations/:id' element={<DestReviews destinations={destinations} />} />
+              <Route path='/destinations/:id' element={<ReviewCard destinations={destinations} />} />
             </Routes>
           </Router>
         </AuthProvider>
