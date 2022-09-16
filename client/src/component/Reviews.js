@@ -68,7 +68,7 @@ function Reviews({ destination }) {
 
     return (
         <>
-            <h2>Reviews</h2>
+            <h2>✨Reviews✨</h2>
             <ul>
                 {listOfReviews.map((review, index) => {
                     return (
@@ -78,13 +78,14 @@ function Reviews({ destination }) {
                                     <b>{review.user.username} </b>
                                     ({review.user.location}) says:
                                 </div>
-                                <div> City: {review.city} </div>
+                                <div> Rating: <b>{review.rating}</b> </div>
+                                <div> City: <b>{review.city}</b> </div>
                                 <div> Length of Stay (days): {review.length_of_stay} </div>
                                 <div>
-                                    Kodak Moment! <img className="border-2 border-black" src={review.image_url} />
+                                    <b>Instagram Moment!</b> <img className="border-2 border-black" src={review.image_url} />
                                 </div>
-                                <div> Review: {review.review}</div>
-                                <div> Pro-Tip! {review.pro_tip} </div>
+                                <div> <b>Review:</b> {review.review}</div>
+                                <div> <b>Pro-Tip!</b> {review.pro_tip} </div>
                                 {user && (user.id === review.user.id) ?
                                     (<div className="m-1 flex flex-wrap gap-2">
                                         <Button

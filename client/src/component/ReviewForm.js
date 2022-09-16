@@ -162,7 +162,7 @@ function ReviewForm({
                         <TextInput
                             id="image"
                             type="url"
-                            placeholder="Kodak Moment"
+                            placeholder="Instagram Moment"
                             value={image}
                             onChange={(e) => setImage(e.target.value)}
                             required={true} />
