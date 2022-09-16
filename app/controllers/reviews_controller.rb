@@ -13,9 +13,12 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        review = Review.create!(review_params)
-        # session[:user_id] = user.id
-        render json: review, status: :created
+        if session[:user_id] != nil
+            review = Review.create!(review_params.merge(:user_id => session[:user_id]))
+            render json: review, includes: ['review.user'], status: :created
+        else
+            render json: { error: "Not authorized" }, status: :unauthorized
+        end
     end
 
     def update
@@ -25,7 +28,7 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        review = find_review
+        review = review_find
         review.destroy
         head :no_content
     end
@@ -37,6 +40,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-        params.permit(:rating, :image_url, :review, :pro_tip, :length_of_stay, :city, :user_id, :destination_id)
+        params.permit(:rating, :image_url, :review, :pro_tip, :length_of_stay, :city, :destination_id, :user_id)
     end
 end
