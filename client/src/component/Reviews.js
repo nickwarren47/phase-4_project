@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Button, Modal } from 'flowbite-react';
 import ReviewForm from './ReviewForm';
 import { AuthContext } from "../Context/AuthContext"
+import { useNavigate } from "react-router-dom";
 
 
 function Reviews({ destination }) {
@@ -9,8 +10,9 @@ function Reviews({ destination }) {
     const [listOfReviews, setListOfReviews] = useState(destination.reviews)
     const [modalShown, setModalShown] = useState(false);
     const [reviewToUpdate, setReviewToUpdate] = useState(null);
+    const navigate = useNavigate();
 
-    const { user, signout } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
 
     function toggleModal() {
@@ -44,8 +46,13 @@ function Reviews({ destination }) {
     }
 
     function handleAddReview () {
-        setReviewToUpdate(null)
-        toggleModal()
+        if (user) {
+            setReviewToUpdate(null)
+            toggleModal()
+        }
+        else {
+            navigate("/login")
+        }
     }
 
     function onReviewUpdate (updatedReview) {
@@ -78,7 +85,7 @@ function Reviews({ destination }) {
                                 </div>
                                 <div> Review: {review.review}</div>
                                 <div> Pro-Tip! {review.pro_tip} </div>
-                                {user.id === review.user.id ?
+                                {user && (user.id === review.user.id) ?
                                     (<div className="m-1 flex flex-wrap gap-2">
                                         <Button
                                             onClick={() => handleDelete(review)} 
