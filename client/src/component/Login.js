@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Label, TextInput, Button } from "flowbite-react"
+import { Label, TextInput, Button, Toast } from "flowbite-react"
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cursor from "../image/Cursor.gif"
@@ -25,7 +25,9 @@ function Login() {
           navigate(from, { replace: true });
         }
       })
-      .catch()
+    // .catch((error) => {
+
+    // })
   }
 
   return (
@@ -34,42 +36,52 @@ function Login() {
         <img src={Cursor} alt="logo" />
       </div>
       <div className="p-5 mx-20 my-20 border-2 border-black">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div>
-          <div className="mb-2 block">
-            <Label
-              htmlFor="username"
-              value="Username" />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <div>
+            <div className="mb-2 block">
+              <Label
+                htmlFor="username"
+                value="Username" />
+            </div>
+            <TextInput
+              id="email1"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username..."
+              required={true}
+            />
           </div>
-          <TextInput
-            id="email1"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username..."
-            required={true}
-          />
-        </div>
-        <div>
-          <div className="mb-2 block">
-            <Label
-              htmlFor="password1"
-              value="Password" />
+          <div>
+            <div className="mb-2 block">
+              <Label
+                htmlFor="password1"
+                value="Password" />
+            </div>
+            <TextInput
+              id="password1"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password..."
+              value={password}
+              required={true}
+            />
           </div>
-          <TextInput
-            id="password1"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password..."
-            value={password}
-            required={true}
-          />
-        </div>
-        <Button type="submit">
-          Login
-        </Button>
-      </form>
+          <Button type="submit">
+            Login
+          </Button>
+        </form>
       </div>
+      {error ? (
+        <Toast>
+          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-500 dark:bg-red-800 dark:text-red-200">
+          </div>
+          <div className="ml-3 text-sm font-normal">
+            {error}
+          </div>
+          <Toast.Toggle />
+        </Toast>
+      ) : null}
     </div>
   );
 }
